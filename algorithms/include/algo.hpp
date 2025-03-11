@@ -1,36 +1,47 @@
 #ifndef ALGO_H_
 #define ALGO_H_
-
 #include "types.hpp"
 
-long fibonacci(const int n)
-{
-    int term_1 = 0, term_2 = 1;
+inline long fibonacci(const int n) {
+    int term_0 = 0, term_1 = 1;
     int nth_term = 0;
+
+    if (n == 0) {
+        return term_0;
+    }
 
     if (n == 1) {
         return term_1;
     }
-    if (n == 2) {
-        return term_2;
+
+    for (int i = 2; i <= n; i++) {
+        nth_term = term_0 + term_1;
+        term_0 = term_1;
+        term_1 = nth_term;
     }
 
-    for (int i = 3; i <= n; i++) {
-        nth_term = term_1 + term_2;
-        term_1 = term_2;
-        term_2 = nth_term;
-    }
     return nth_term;
 }
 
-int linear_search(Array * a, const int target)
-{
-    return 0;
+inline int linear_search(Array const * a, const int target) {
+    for (int i = 0; i < a->len; i++) {
+        if (a->data[i] == target) {
+            return i;
+            }
+        }
+    return -1;
 }
 
-long factorial(const int n)
+
+inline long factorial(const int n)
 {
-    return 0;
+    int nth_term = 1; //0! = 1
+    for (int i = 1; i <= n; i++)
+    {
+        nth_term *= i;
+    }
+
+    return nth_term;
 }
 
 #endif // ALGO_H_
