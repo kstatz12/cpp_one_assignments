@@ -44,4 +44,5 @@ inline long factorial(const int n)
     return nth_term;
 }
 
+
 #endif // ALGO_H_
